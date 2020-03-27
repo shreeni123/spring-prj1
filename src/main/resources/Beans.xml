@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="petrolEngine" name="petrolEngine" class="co.pragra.springlearning.sprintfirst.PetrolEngine"></bean>
+    <bean autowire-candidate="true" name="dieselEngine" class="co.pragra.springlearning.sprintfirst.DieselEngine"></bean>
+
+    <bean name="car"  class="co.pragra.springlearning.sprintfirst.Car" init-method="initMethod" destroy-method="destroyMethod">
+        <constructor-arg name="engine" ref="dieselEngine"></constructor-arg>
+        <constructor-arg name="color" value="Black"></constructor-arg>
+    </bean>
+
+    <bean name="employee" class="co.pragra.springlearning.sprintfirst.Employee">
+        <property name="name" value="Mojos"></property>
+        <property name="addresses">
+            <util:set set-class="java.util.TreeSet">
+                <value>200 Matheson Blvd Mississauga L5R 3L7</value>
+                <value>Toronto ON</value>
+                <value>Brampton ON</value>
+            </util:set>
+        </property>
+    </bean>
+    <bean name="carRating" class="co.pragra.springlearning.sprintfirst.CarRating">
+        <constructor-arg  name="capRatingMap">
+            <util:map map-class="java.util.HashMap">
+                <entry key="honda" value="First"></entry>
+                <entry key="toyota" value="Second"></entry>
+                <entry key="lexus" value="Third"></entry>
+            </util:map>
+        </constructor-arg>
+    </bean>
+
+    <bean autowire="byName" class="co.pragra.springlearning.sprintfirst.Address">
+        <constructor-arg name="address" value="New York, USA"></constructor-arg>
+    </bean>
+    <bean name="tempEmployee" class="co.pragra.springlearning.sprintfirst.TempEmployee">
+        <constructor-arg name="address" value=""></constructor-arg>
+    </bean>
+</beans>
