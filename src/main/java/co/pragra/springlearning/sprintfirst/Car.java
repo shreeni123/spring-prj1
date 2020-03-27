@@ -1,12 +1,18 @@
 package co.pragra.springlearning.sprintfirst;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Car {
     private IEngine engine;
+
+    @Value("${car.color}")
     private String color;
 
-    public Car(IEngine engine, String color) {
+    public Car(@Qualifier("dEngine") IEngine engine) {
         this.engine = engine;
-        this.color = color;
     }
 
     public void initMethod(){

@@ -22,8 +22,8 @@ public class SprintfirstApplication {
         CarRating carRating = context.getBean("carRating", CarRating.class );
         System.out.println(carRating);
 //
-//        TempEmployee tempEmployee = context.getBean("tempEmployee", TempEmployee.class);
-//        System.out.println();
+        TempEmployee tempEmployee = context.getBean("tempEmployee", TempEmployee.class);
+        System.out.println(tempEmployee);
 
 
 
