@@ -15,12 +15,12 @@ pipeline {
                 }
             }
         }
-        stage('Compile')P{
+        stage('Compile'){
             steps {
                 sh 'mvn compile'
             }
         }
-        stage('Test')P{
+        stage('Test'){
             steps {
                 sh 'mvn test'
             }
