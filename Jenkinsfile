@@ -1,8 +1,8 @@
 pipeline {
-    agent { label :'worker-1'}
+    agent { label 'worker-1'}
     tools {
-        jdk: 'jdk8'
-        maven : 'm3'
+        jdk 'jdk8'
+        maven  'm3'
     }
     stages {
         stage('Checkout SCM'){
