@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Checkout SCM'){
             steps {
-                 git branch: 'master', url: 'https://github.com/atinsingh/spring-prj1.git'
+                checkout scm
             }
             post{
                 always{
