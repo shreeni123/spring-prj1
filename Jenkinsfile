@@ -35,7 +35,7 @@ pipeline {
             echo 'SUCESS'
         }
         failure {
-                 slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#devops_march', color: 'danger', message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} - Build STATUS ${currentBuild.description}",teamDomain: 'pragraconsulting2020', tokenCredentialId: 'slack'
+                 slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#shree-test', color: 'danger', message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} - Build STATUS ${currentBuild.description}",teamDomain: 'pragraconsulting2020', tokenCredentialId: 'slack'
         }
     }
 }
