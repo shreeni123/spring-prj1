@@ -1,10 +1,19 @@
 pipeline {
-    agent any
-    tools {
-        jdk 'jdk8'
-        maven  'm3'
+    agent {
+        docker {
+            image 'maven:3-alpine' 
+            args '-v /root/.m2:/root/.m2' 
+        }
+    }
+    options {
+        skipStagesAfterUnstable()
     }
     stages {
+        stage('Install Maven') { 
+            steps {
+                sh 'mvn -B -DskipTests clean package' 
+            }
+        }
         stage('Checkout SCM'){
             steps {
                 checkout scm
