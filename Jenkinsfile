@@ -25,16 +25,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            echo 'BUILD DONE'
-        }
-        success {
-            echo 'SUCCESS'
-        }
-        failure {
-                 slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#shree-test', color: 'danger', message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} - Build STATUS ${currentBuild.description}",teamDomain: 'pragraconsulting2020', tokenCredentialId: 'slack'
-        }
-    }
 }
