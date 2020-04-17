@@ -9,27 +9,22 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        stage('Install Maven') { 
-            steps {
-                sh 'mvn -B -DskipTests clean package' 
-            }
-        }
-        stage('Checkout SCM'){
+        stage('Checkout SCM') {
             steps {
                 checkout scm
             }
             post{
                 always{
-                    sh 'echo Clone Succesfull'
+                    sh 'echo Clone Successful'
                 }
             }
         }
-        stage('Compile'){
+        stage('Compile') { 
             steps {
-                sh 'mvn compile'
+                sh 'mvn -B -DskipTests clean package' 
             }
         }
-        stage('Test'){
+        stage('Test') {
             steps {
                 sh 'mvn test'
             }
@@ -46,7 +41,7 @@ pipeline {
             echo 'BUILD DONE'
         }
         success {
-            echo 'SUCESS'
+            echo 'SUCCESS'
         }
         failure {
                  slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#shree-test', color: 'danger', message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER} - Build STATUS ${currentBuild.description}",teamDomain: 'pragraconsulting2020', tokenCredentialId: 'slack'
