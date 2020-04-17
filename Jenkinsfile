@@ -9,16 +9,6 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        stage('Checkout SCM') {
-            steps {
-                checkout scm
-            }
-            post{
-                always{
-                    sh 'echo Clone Successful'
-                }
-            }
-        }
         stage('Compile') { 
             steps {
                 sh 'mvn -B -DskipTests clean package' 
